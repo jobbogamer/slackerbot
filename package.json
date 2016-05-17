@@ -1,32 +1,36 @@
 {
-  "name": "hubot-openshift",
-  "version": "1.0.0",
-  "description": "Hubot on OpenShift",
-  "keywords": [
-    "Hubot",
-    "OpenShift",
-    "Node.js",
-    "application",
-    "openshift"
-  ],  
+  "name": "slackerbot",
+  "version": "0.0.1",
+  "description": "Slack bot based on Hubot",
   "author": {
-    "name": "Katie Miller",
-    "email": "katie@codemiller.com",
-    "url": "http://www.codemiller.com/"
-  },  
+    "name": "Josh Asch",
+    "email": "josh.asch@gmail.com",
+    "url": "http://joshasch.com/"
+  },
+  "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/codemiller/hubot-openshift"
-  },  
+    "url": "https://github.com/jobbogamer/slackerbot"
+  },
   "engines": {
-    "node": ">= 5.5.x",
-    "npm": ">= 3.5.x"
+    "node": ">= 5.5.0",
+    "npm": ">= 3.5.3"
   },
   "dependencies": {
     "hubot": ">= 2.6.0 < 3.0.0",
-    "hubot-scripts": ">= 2.5.0 < 3.0.0"
+    "hubot-mimic": "^0.1.2",
+    "hubot-redis-brain": "0.0.3",
+    "hubot-scripts": ">= 2.5.0 < 3.0.0",
+    "hubot-slack": "^3.4.2"
   },
   "scripts": {
-    "start": "PORT=$OPENSHIFT_NODEJS_PORT BIND_ADDRESS=$OPENSHIFT_NODEJS_IP HEROKU_URL=$OPENSHIFT_APP_DNS REDIS_URL=redis://:$REDIS_PASSWORD@$OPENSHIFT_REDIS_HOST:$OPENSHIFT_REDIS_PORT bin/hubot -n Hubot -a shell"
+    "test": "mocha --recursive",
+    "start": "EXPRESS_PORT=$OPENSHIFT_NODEJS_PORT EXPRESS_BIND_ADDRESS=$OPENSHIFT_NODEJS_IP HEROKU_URL=$OPENSHIFT_APP_DNS REDIS_URL=redis://:$REDIS_PASSWORD@$OPENSHIFT_REDIS_HOST:$OPENSHIFT_REDIS_PORT bin/hubot -n sb -a slack"
+  },
+  "devDependencies": {
+    "hubot-test-helper": "^1.4.4",
+    "mocha": "^2.4.5",
+    "mockery": "^1.7.0",
+    "should": "^8.3.1"
   }
 }
