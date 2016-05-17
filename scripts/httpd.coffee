@@ -11,6 +11,7 @@
 #   None
 #
 # URLS:
+#   /
 #   /hubot/version
 #   /hubot/ping
 #   /hubot/time
