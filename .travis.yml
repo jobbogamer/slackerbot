@@ -1,0 +1,16 @@
+language: node_js
+node_js:
+  - '5.5'
+deploy:
+  provider: openshift
+  user: josh.asch@gmail.com
+  password:
+    secure: xvFQdeHSKsgkKtL7i1UPCHURQ4FG0dUwSo3h9PwU52BXxHKAgUgmuGz4HwmrvkEBWENzFHs+QFzQ5x1s3aY+G2fcmiZHmfFEc9RrafybkMsxAl50et2hxJs+nAIovYs3xzixv4wMFY6rwa7hmdhwBbTiz2NAMhEV9Dw7hn1HzaXnnDoCQS/bM2Ggaojq3W1VNMwh/DkURku4SCigpJYlvzNrv47hOx+8lRgbUNXpZViV1Of1copvWmws+2WS524KQhjb2LZaxNgFbz5TslXJV1X73/eNBDmULKjqEpvYBWP0V8g8n6AHsD8euK+pS/ZcXCK71K19RgVdo7m16U8+Pk1dGbaEpxrmqbe6OrDCpkJ21/Sh78k0JnjGeeMMnebgZy80wmpRD4Na7xIaBkGXZ9UlmhPOGV4+K1uJEkQLJ56tRPdEOvzqyaqy+FVhqNPOvbEJ3fsrYyKRimVnLBEcBS1XhR201Nk3DwNlwKJhZ2wZa+R2VmhMHJ5i+GcznVfCYPUlncJRY8pLwVJWyAG3nv9jO5QNahaZgWShrbC1kchRtaAvlzKUncNpsAk1kMOFxSNiu+v23w4qV2aGuVbq67jAWWv4FNfqtdZEwsG/KnCXERr/zVqdaNQ6IX5iMvc+K38EQu61pjabsEoj5dQAMH4qAyIxkjEltuFOjSzuR9c=
+  app: slackerbot
+  domain: jobbogamer
+  on:
+    repo: jobbogamer/slackerbot
+  skip_cleanup: true
+notifications:
+  email:
+    on_success: never
