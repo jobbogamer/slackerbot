@@ -24,13 +24,14 @@
     "hubot-slack": "^3.4.2"
   },
   "scripts": {
-    "test": "mocha --recursive",
+    "test": "REDIS_URL=redis://localhost:6379/hubot_test mocha --recursive --compilers coffee:coffee-script/register",
     "start": "EXPRESS_PORT=$OPENSHIFT_NODEJS_PORT EXPRESS_BIND_ADDRESS=$OPENSHIFT_NODEJS_IP HEROKU_URL=$OPENSHIFT_APP_DNS REDIS_URL=redis://:$REDIS_PASSWORD@$OPENSHIFT_REDIS_HOST:$OPENSHIFT_REDIS_PORT bin/hubot -n sb -a slack"
   },
   "devDependencies": {
+    "chai": "^3.5.0",
+    "coffee-script": "^1.6.3",
     "hubot-test-helper": "^1.4.4",
     "mocha": "^2.4.5",
-    "mockery": "^1.7.0",
-    "should": "^8.3.1"
+    "mockery": "^1.7.0"
   }
 }
