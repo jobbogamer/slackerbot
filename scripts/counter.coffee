@@ -2,10 +2,10 @@
 #   Keep track of named counters.
 #
 # Commands:
-#   hubot set <name> to <value> - Set the <value> of a counter, or create a new counter
-#   hubot get <name> - Display the current <value> of a counter
-#   hubot add <value> to <name> - Add <value> to the current <value> of a counter
-#   hubot subtract <value> from <name> - Subtract <value> from the curent <value> of a counter
+#   hubot set <name> to <value> - Set the value of a counter, or create a new counter
+#   hubot get <name> - Display the current value of a counter
+#   hubot add <value> to <name> - Add <value> to the current value of a counter
+#   hubot subtract <value> from <name> - Subtract <value> from the curent value of a counter
 
 module.exports = (robot) ->
 
