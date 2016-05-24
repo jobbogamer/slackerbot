@@ -1,6 +1,6 @@
 {
   "name": "slackerbot",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Slack bot based on Hubot",
   "author": {
     "name": "Josh Asch",
