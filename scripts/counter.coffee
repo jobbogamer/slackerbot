@@ -65,8 +65,9 @@ module.exports = (robot) ->
             value = counters[name]
 
             # Add the operand to the current value, as long as the counter exists.
-            newValue = value + operand if value?
-            counters[name] = newValue
+            if value?
+                newValue = value + operand
+                counters[name] = newValue
 
             # Store the object back in memory.
             robot.brain.set 'counters', counters
@@ -96,8 +97,9 @@ module.exports = (robot) ->
             value = counters[name]
 
             # Subtract the operand from the current value, as long as the counter exists.
-            newValue = value - operand if value?
-            counters[name] = newValue
+            if value?
+                newValue = value - operand
+                counters[name] = newValue
 
             # Store the object back in memory.
             robot.brain.set 'counters', counters

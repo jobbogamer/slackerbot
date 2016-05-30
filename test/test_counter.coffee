@@ -172,27 +172,6 @@ describe 'counter.coffee', ->
                 ]
 
 
-        it 'should refuse to add a negative number', ->
-            # Set a value for the counter in memory.
-            @room.robot.brain.set 'counters', {
-                nuggets: 7
-            }
-
-            # Ask to add two to the value.
-            @room.user.say('alice', 'hubot add -2 to nuggets').then =>
-                # Counter should not have changed.
-                counters = @room.robot.brain.get 'counters'
-                expect(counters).to.exist
-                expect(counters).to.include.keys 'nuggets'
-                expect(counters.nuggets).to.eql 7
-
-                # Bot should reply with an error message.
-                expect(@room.messages).to.eql [
-                    ['alice', 'hubot add -2 to nuggets'],
-                    ['hubot', 'I can\'t add a negative value to a counter. Use `hubot subtract 2 from nuggets` instead.']
-                ]
-
-
         it 'should add a decimal value', ->
             # Set a value for the counter in memory.
             @room.robot.brain.set 'counters', {
@@ -236,6 +215,27 @@ describe 'counter.coffee', ->
                 ]
 
 
+        it 'should not fail when the value is zero', ->
+            # Set the value to be 0.
+            @room.robot.brain.set 'counters', {
+                nuggets: 0
+            }
+
+            # Ask to add to the value.
+            @room.user.say('alice', 'hubot add 5 to nuggets').then =>
+                # Counter should have been updated.
+                counters = @room.robot.brain.get 'counters'
+                expect(counters).to.exist
+                expect(counters).to.include.keys 'nuggets'
+                expect(counters.nuggets).to.eql 5
+
+                # Bot should reply with the new value of the counter.
+                expect(@room.messages).to.eql [
+                    ['alice', 'hubot add 5 to nuggets'],
+                    ['hubot', 'nuggets is now set to 5.']
+                ]
+
+
     context 'when someone calls subtract', ->
         it 'should subtract from an existing counter', ->
             # Set a value for the counter in memory.
@@ -255,27 +255,6 @@ describe 'counter.coffee', ->
                 expect(@room.messages).to.eql [
                     ['alice', 'hubot subtract 2 from nuggets'],
                     ['hubot', 'nuggets is now set to 5.']
-                ]
-
-
-        it 'should refuse to subtract a negative number', ->
-            # Set a value for the counter in memory.
-            @room.robot.brain.set 'counters', {
-                nuggets: 3
-            }
-
-            # Ask to add two to the value.
-            @room.user.say('alice', 'hubot subtract -2 from nuggets').then =>
-                # Counter should not have changed.
-                counters = @room.robot.brain.get 'counters'
-                expect(counters).to.exist
-                expect(counters).to.include.keys 'nuggets'
-                expect(counters.nuggets).to.eql 3
-
-                # Bot should reply with an error message.
-                expect(@room.messages).to.eql [
-                    ['alice', 'hubot subtract -2 from nuggets'],
-                    ['hubot', 'I can\'t subtract a negative value from a counter. Use `hubot add 2 to nuggets` instead.']
                 ]
 
 
@@ -319,4 +298,25 @@ describe 'counter.coffee', ->
                 expect(@room.messages).to.eql [
                     ['alice', 'hubot subtract 2 from nuggets'],
                     ['hubot', 'nuggets is not defined.']
+                ]
+
+
+        it 'should not fail when the value is zero', ->
+            # Set the value to be 0.
+            @room.robot.brain.set 'counters', {
+                nuggets: 0
+            }
+
+            # Ask to add to the value.
+            @room.user.say('alice', 'hubot subtract 5 from nuggets').then =>
+                # Counter should have been updated.
+                counters = @room.robot.brain.get 'counters'
+                expect(counters).to.exist
+                expect(counters).to.include.keys 'nuggets'
+                expect(counters.nuggets).to.eql -5
+
+                # Bot should reply with the new value of the counter.
+                expect(@room.messages).to.eql [
+                    ['alice', 'hubot subtract 5 from nuggets'],
+                    ['hubot', 'nuggets is now set to -5.']
                 ]
