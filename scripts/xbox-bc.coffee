@@ -42,8 +42,8 @@ module.exports = (robot) ->
                 message = "New game#{unit} added to Xbox One backwards compatibility:\n• #{newGames.join '\n• '}"
                 robot.messageRoom 'general', message
 
-                # Store the new list of games in the database.
-                robot.brain.set 'xbox_bc_list', newGames
+                # Store the entire list of games in the database.
+                robot.brain.set 'xbox_bc_list', games
 
             else
                 robot.logger.info "No new backwards compatible games found"
