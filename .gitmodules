@@ -1,3 +1,6 @@
 [submodule "modules/hubot-mimic"]
 	path = modules/hubot-mimic
 	url = https://github.com/jobbogamer/hubot-mimic.git
+[submodule "modules/hubot-calculator"]
+	path = modules/hubot-calculator
+	url = https://github.com/jobbogamer/hubot-calculator.git
