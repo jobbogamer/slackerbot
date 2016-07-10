@@ -68,7 +68,7 @@ getReleaseNotes = (robot, callback) ->
 
 module.exports = (robot) ->
 
-    robot.respond /what(?:'|’)s new/, (msg) ->
+    robot.respond /what(?:'|’)s new/i, (msg) ->
         getReleaseNotes robot, (notes) ->
             if notes?
                 msg.send notes
