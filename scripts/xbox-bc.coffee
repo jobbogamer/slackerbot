@@ -51,6 +51,6 @@ module.exports = (robot) ->
 
     # Once the robot has started up, start a cron job to check the page every day.
     robot.on 'startup', ->
-        # Run the job every day at 15:00:00.
-        job = new CronJob '00 00 15 * * *', cronFunction, null, true, 'Europe/London'
+        # Run the job every day at 21:00:00.
+        job = new CronJob '00 00 21 * * *', cronFunction, null, true, 'Europe/London'
         robot.logger.info 'Started xbox-bc cron job'
